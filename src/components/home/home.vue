@@ -10,7 +10,7 @@
                     </div></el-col>
                     <el-col :span="2">
                         <div class="grid-content bg-purple">
-                            <a class="loginout" href="">退出</a>
+                            <a class="loginout" href="" @click.prevent="handleSignout">退出</a>
                         </div>
                     </el-col>
                 </el-row>
@@ -91,9 +91,26 @@
 </template>
 
 <script>
-    export default {
-        name: "home"
+export default {
+
+  // newVue之前自动触发此方法
+/*  beforeCreate () {
+    // 获取token
+    const token = localStorage.getItem('token')
+    // 没有token 跳转登录
+    if (!token) {
+      this.$router.push({name: 'login'})
     }
+    // 有token 渲染组件
+  } */
+  methods: {
+    handleSignout () {
+      localStorage.clear()
+      this.$message.success('退出成功')
+      this.$router.push({name: 'login'})
+    }
+  }
+}
 </script>
 
 <style>

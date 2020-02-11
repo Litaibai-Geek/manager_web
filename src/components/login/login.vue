@@ -33,27 +33,26 @@ export default {
     }
   },
   methods: {
-    async handleLogin(){
-      this.$router.push({name:'home'})
-     const res = this.$http.post('login',this.formdata)
-        // console.log(res)
-        const {
-          data,
-                meta:{msg,status}
-        } = res.data
+    async handleLogin () {
+      this.$router.push({name: 'home'})
+      const res = this.$http.post('login', this.formdata)
+      // console.log(res)
+      const {
+        data,
+        meta: {msg, status}
+      } = res.data
 
-        if(status === 200){
-          //存储token
-          localStorage.setItem('token',data.token)
-          // 登录成功
-          this.$message.success('登录成功！');
-          // 跳转home
-          this.$router.push({name:'home'})
-
-        }else {
-          // 登录失败
-          this.$message.warning('登录失败！');
-        }
+      if (status === 200) {
+        // 存储token
+        localStorage.setItem('token', data.token)
+        // 登录成功
+        this.$message.success('登录成功！')
+        // 跳转home
+        this.$router.push({name: 'home'})
+      } else {
+        // 登录失败
+        this.$message.warning('登录失败！')
+      }
     }
   }
 }
