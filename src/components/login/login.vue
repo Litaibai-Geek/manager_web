@@ -13,10 +13,12 @@
         <el-form-item label="密码">
           <el-input v-model="formdata.password"></el-input>
         </el-form-item>
+        <el-form-item label-width="0">
           <el-button
             @click.prevent="handleLogin()"
             class="login-btn"
             type="primary">登录</el-button>
+          </el-form-item>
       </el-form>
 
     </div>
@@ -79,5 +81,8 @@ export default {
   }
   .login-warp .login-btn{
     width: 30%;
+  }
+  .el-form-item{
+    text-align: center;
   }
 </style>
