@@ -27,7 +27,7 @@
         <!-- 表格 -->
         <template>
             <el-table
-                    :data="tableData"
+                    :data="userlist"
                     style="width: 100%">
                 <el-table-column
                         type="index"
@@ -231,10 +231,6 @@ export default {
   },
   methods: {
     async getUserList () {
-      const AUTH_TOKEN = localStorage.getItem('token')
-      this.$http.defaults.headers.common['Authorization'] = AUTH_TOKEN
-
-      // eslint-disable-next-line no-template-curly-in-string
       const res = this.$http.get('users?query=${this.query}&pagenum=${this.pagenum}&pagesize=${this.pagesize}')
       console.log(res)
       const {meta: {status, msg}, data: {users, total}} = res.data
